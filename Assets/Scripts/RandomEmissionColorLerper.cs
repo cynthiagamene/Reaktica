@@ -12,16 +12,22 @@ public class RandomEmissionColorLerper : MonoBehaviour
 
     private Renderer renderer;
 
+    //private ColorLerper colorLerp; 
+
     private void Start()
     {
         // Get the renderer component of the object this script is attached to
         renderer = GetComponent<Renderer>();
+        //colorLerp = GetComponent<ColorLerper>();
 
         // Set the start color to the current emission color of the material
         startColor = renderer.material.GetColor("_EmissionColor");
+        //startColor = colorLerp.startColor;
 
         // Set the end color to a random color with a random intensity between minIntensity and maxIntensity
         endColor = Random.ColorHSV(0.0f, 1.0f, 1.0f, 1.0f, minIntensity, maxIntensity);
+        //endColor = colorLerp.endColor;
+
     }
 
     private void Update()
@@ -42,6 +48,8 @@ public class RandomEmissionColorLerper : MonoBehaviour
             timeElapsed = 0.0f;
             startColor = endColor;
             endColor = Random.ColorHSV(0.0f, 1.0f, 1.0f, 1.0f, minIntensity, maxIntensity);
+            //startColor = colorLerp.startColor;
+            //endColor = colorLerp.endColor; 
         }
     }
 }
